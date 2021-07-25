@@ -2,6 +2,64 @@
 
 # NtAl
 
+## Notes
+
+Treinamento | SENAI
+
+- utilizando framework nx (https://nx.dev/)
+
+- npx create-nx-workspace nt-al
+- foi escolhido workspace empty
+- não utilizou nx cloud
+- cd nt-al
+- npm install -g nx (instalando globalmente nx)
+- npm install --save-dev @nrwl/nest @nrwl/angular (adicionando libs nest e angular)
+- nx g @nrwl/nest:app --help (comando de ajuda)
+- nx g @nrwl/nest:app api (criando o backend)
+- nx serve api (rodar api - lista de comandos no workspace.json) 
+
+Sequelize ORM
+https://docs.nestjs.com/techniques/database#sequelize-integration
+
+- npm install --save @nestjs/sequelize sequelize sequelize-typescript mysql2
+- npm install --save-dev @types/sequelize
+- npm install --save-dev sequelize-cli
+
+.sequelizerc (raiz do projeto)
+
+const path = require('path');
+
+module.exports = {
+'seeders-path': path.resolve('tools/database', 'seeders'),
+'migrations-path': path.resolve('tools/database', 'migrations'),
+'config': path.resolve('tools/database', 'config.js'),
+}
+
+npx sequelize-cli migration:generate --name NomeMigration
+
+npx sequelize-cli db:migrate
+
+para rodar cli do nestjs entrar em cd apps/api/src/app 
+
+https://docs.nestjs.com/techniques/validation#validation
+
+nx g @nrwl/workspace:library api-interfaces
+
+
+
+eslint interface rule
+"@typescript-eslint/naming-convention": [
+            "error",
+            {
+                "selector": "interface",
+                "format": ["PascalCase"],
+                "custom": {
+                    "regex": "^I[A-Z]",
+                    "match": true
+                }
+            }
+        ]
+
 This project was generated using [Nx](https://nx.dev).
 
 <p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
