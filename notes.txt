@@ -1,0 +1,69 @@
+Treinamento | SENAI
+
+
+npm install -g nx
+npm install --save-dev @nrwl/nest  @nrwl/angular
+
+- utilizando framework nx (https://nx.dev/)
+
+1- npx create-nx-workspace nt-al
+2- foi escolhido workspace empty
+3- não utilizou nx cloud
+4- cd nt-al
+5- npm install -g nx (instalando globalmente nx)
+6- npm install --save-dev @nrwl/nest @nrwl/angular (adicionando libs nest e angular)
+7- nx g @nrwl/nest:app --help (comando de ajuda)
+8- nx g @nrwl/nest:app api (criando o backend)
+9 - nx serve api (rodar api - lista de comandos no workspace.json)
+
+Sequelize ORM
+https://docs.nestjs.com/techniques/database#sequelize-integration
+
+npm install --save @nestjs/sequelize sequelize sequelize-typescript mysql2
+npm install --save-dev @types/sequelize
+npm install --save-dev sequelize-cli
+.sequelizerc (raiz do projeto)
+
+const path = require('path');
+
+module.exports = {
+'seeders-path': path.resolve('tools/database', 'seeders'),
+'migrations-path': path.resolve('tools/database', 'migrations'),
+'config': path.resolve('tools/database', 'config.js'),
+}
+
+npx sequelize-cli migration:generate --name NomeMigration
+
+npx sequelize-cli db:migrate
+
+para rodar cli do nestjs entrar em cd apps/api/src/app
+
+https://docs.nestjs.com/techniques/validation#validation
+
+nx g @nrwl/workspace:library api-interfaces
+
+
+
+### eslint interface rule
+"@typescript-eslint/naming-convention": [
+            "error",
+            {
+                "selector": "interface",
+                "format": ["PascalCase"],
+                "custom": {
+                    "regex": "^I[A-Z]",
+                    "match": true
+                }
+            }
+        ]
+
+
+#front
+
+nx g @nrwl/angular:app front --backendProject=api
+"mini-css-extract-plugin": "2.2.0",
+
+nx serve front
+
+nx generate @nrwl/angular:module task --routing
+nx generate @nrwl/angular:module task --routing
