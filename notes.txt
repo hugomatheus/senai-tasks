@@ -67,3 +67,4 @@ nx serve front
 
 nx generate @nrwl/angular:module task --routing
 nx generate @nrwl/angular:module task --routing
+nx generate @nrwl/angular:service task
